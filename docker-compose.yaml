@@ -3,7 +3,7 @@ version: '3'
 services: 
   nginx:
     build:
-      context: nginx
+      context: ./nginx
     container_name: nginx
     networks: 
       - node-network
@@ -14,7 +14,7 @@ services:
 
   app:
     build: 
-      context: node
+      context: ./node
     container_name: app
     command: node index.js
     entrypoint: dockerize -wait tcp://db:3306 -timeout 20s docker-entrypoint.sh
@@ -43,3 +43,7 @@ services:
 networks: 
   node-network:
     driver: bridge      
+
+# volumes:
+#   mysql:
+#   node:    
