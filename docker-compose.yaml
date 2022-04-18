@@ -9,6 +9,7 @@ services:
       - node-network
     ports: 
       - "8080:80"
+    restart: always
     depends_on:
       - app
 
@@ -23,6 +24,7 @@ services:
     volumes: 
       - ./node:/usr/src/app
     tty: true
+    restart: always
     depends_on: 
        - db
 
@@ -42,8 +44,4 @@ services:
 
 networks: 
   node-network:
-    driver: bridge      
-
-# volumes:
-#   mysql:
-#   node:    
+    driver: bridge
